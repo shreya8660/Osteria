@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #1e1208;
+    color: #f5ead6;
+    font-family: "Jost", sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-gold text-espresso font-sans font-semibold tracking-widest uppercase text-xs px-8 py-3 
+    hover:bg-gold-light transition-all duration-300 border border-gold hover:border-gold-light;
+  }
+  .btn-outline {
+    @apply border border-gold text-gold font-sans font-semibold tracking-widest uppercase text-xs px-8 py-3
+    hover:bg-gold hover:text-espresso transition-all duration-300;
+  }
+  .input-dark {
+    @apply w-full bg-espresso-light border border-gold/30 text-cream placeholder-cream/40
+    px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors duration-200;
+  }
+  .section-title {
+    @apply font-display text-4xl md:text-5xl text-cream-light mb-3;
+  }
+  .divider-gold {
+    @apply flex items-center gap-4 my-4;
+  }
+  .divider-gold::before,
+  .divider-gold::after {
+    content: "";
+    @apply flex-1 h-px bg-gold/40;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1e1208; }
+::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
+
+/* Fade-in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease forwards; }
+.fade-up-delay-1 { animation: fadeUp 0.7s 0.15s ease both; }
+.fade-up-delay-2 { animation: fadeUp 0.7s 0.3s ease both; }
+.fade-up-delay-3 { animation: fadeUp 0.7s 0.45s ease both; }
