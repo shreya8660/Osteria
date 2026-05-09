@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST /api/menu/seed — Seed sample menu items
-router.post("/seed", async (req, res) => {
+router.get("/seed", async (req, res) => {
   try {
     await MenuItem.deleteMany();
     const items = [
