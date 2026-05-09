@@ -17,9 +17,9 @@ const Menu = () => {
 
   useEffect(() => {
   const url =
-    active === "all"
-      ? `${import.meta.env.VITE_API_URL}/api/menu`
-      : `${import.meta.env.VITE_API_URL}/api/menu?category=${active}`;
+  active === "all"
+    ? "https://osteria-1.onrender.com/api/menu"
+    : `https://osteria-1.onrender.com/api/menu?category=${active}`;
 
   setLoading(true);
 
