@@ -4,7 +4,7 @@ const MenuItem = require("../models/MenuItem");
 const { protect, adminOnly } = require("../middleware/authMiddleware");
 
 // GET /api/menu — All items (optionally filter by category)
-router.get("/", async (req, res) => {
+router.get("/seed", async (req, res) => {
   try {
     const filter = {};
     if (req.query.category) filter.category = req.query.category;
