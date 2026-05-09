@@ -13,7 +13,7 @@ const Contact = () => {
     setLoading(true);
     try {
       await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/contact`,
+  "https://osteria-1.onrender.com/api/contact",
   form
 );
       toast.success("Message sent! We'll be in touch.");

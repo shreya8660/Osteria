@@ -18,14 +18,14 @@ const MyBookings = () => {
 
   useEffect(() => {
     if (!user) return navigate("/login");
-    axios.get(`${import.meta.env.VITE_API_URL}/api/bookings/my`)
+    axios.get("https://osteria-1.onrender.com/api/bookings/my")
       .then(r => setBookings(r.data))
       .finally(() => setLoading(false));
   }, [user, navigate]);
 
   const cancel = async (id) => {
     if (!window.confirm("Cancel this reservation?")) return;
-    await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings/${id}`);
+    await axios.delete(`https://osteria-1.onrender.com/api/bookings/${id}`)
     toast.success("Booking cancelled.");
     setBookings(bookings.map(b => b._id === id ? { ...b, status: "cancelled" } : b));
   };

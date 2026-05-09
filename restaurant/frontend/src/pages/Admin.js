@@ -20,14 +20,14 @@ const Admin = () => {
   useEffect(() => {
     if (!user) return navigate("/login");
     if (user.role !== "admin") return navigate("/");
-    aaxios.get(`${import.meta.env.VITE_API_URL}/api/bookings`)
+    axios.get("https://osteria-1.onrender.com/api/bookings")
       .then(r => setBookings(r.data))
       .finally(() => setLoading(false));
   }, [user, navigate]);
 
   const updateStatus = async (id, status) => {
     await axios.patch(
-  `${import.meta.env.VITE_API_URL}/api/bookings/${id}`,
+  `https://osteria-1.onrender.com/api/bookings/${id}`,
   { status }
 );
     setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
@@ -36,8 +36,8 @@ const Admin = () => {
 
   const seedMenu = async () => {
     try {
-      const { data } = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/menu/seed`
+      const { data } = await axios.get(
+  "https://osteria-1.onrender.com/api/menu/seed"
 );
       toast.success(data.message);
     } catch {

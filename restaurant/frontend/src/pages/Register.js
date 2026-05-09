@@ -17,9 +17,15 @@ const Register = () => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.postaxios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
-        name: form.name, email: form.email, phone: form.phone, password: form.password
-      });
+      const { data } = await axios.post(
+  "https://osteria-1.onrender.com/api/auth/register",
+  {
+    name: form.name,
+    email: form.email,
+    phone: form.phone,
+    password: form.password,
+  }
+);
       login(data);
       toast.success(`Welcome, ${data.name}!`);
       navigate("/");

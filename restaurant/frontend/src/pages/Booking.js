@@ -32,7 +32,7 @@ const Booking = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/bookings`,
+  "https://osteria-1.onrender.com/api/bookings",
   form
 );
       setSuccess(data.booking);

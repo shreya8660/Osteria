@@ -15,9 +15,10 @@ const Login = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/auth/login`,
+  "https://osteria-1.onrender.com/api/auth/login",
   form
 );
+
       login(data);
       toast.success(`Welcome back, ${data.name}!`);
       navigate("/");
