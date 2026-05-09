@@ -20,25 +20,98 @@ router.get("/", async (req, res) => {
 router.get("/seed", async (req, res) => {
   try {
     await MenuItem.deleteMany();
-    const items = [
-      { name: "Bruschetta al Pomodoro", description: "Toasted bread with fresh tomatoes, basil & extra virgin olive oil", price: 380, category: "starters", isVeg: true, featured: true },
-      { name: "Burrata Caprese", description: "Creamy burrata with heirloom tomatoes, basil oil & sea salt", price: 520, category: "starters", isVeg: true },
-      { name: "Crispy Calamari", description: "Lightly battered squid rings with marinara & lemon aioli", price: 480, category: "starters", featured: true },
-      { name: "Wild Mushroom Arancini", description: "Risotto balls filled with porcini mushrooms, truffle & parmesan", price: 440, category: "starters", isVeg: true },
-      { name: "Grilled Sea Bass", description: "Whole sea bass with herbs, capers, cherry tomatoes & white wine", price: 1200, category: "mains", featured: true },
-      { name: "Osso Buco Milanese", description: "Slow-braised veal shank with gremolata & saffron risotto", price: 1450, category: "mains", featured: true },
-      { name: "Truffle Tagliatelle", description: "Fresh pasta with black truffle, butter, parmesan & herbs", price: 980, category: "mains", isVeg: true },
-      { name: "Bistecca Fiorentina", description: "T-bone steak grilled over charcoal, rosemary butter & roasted garlic", price: 1800, category: "mains" },
-      { name: "Margherita Classica", description: "San Marzano tomato, fior di latte mozzarella & fresh basil", price: 620, category: "mains", isVeg: true },
-      { name: "Tiramisu della Casa", description: "Classic homemade tiramisu with espresso, mascarpone & cocoa", price: 360, category: "desserts", isVeg: true, featured: true },
-      { name: "Panna Cotta al Frutti", description: "Vanilla panna cotta with seasonal berry compote", price: 320, category: "desserts", isVeg: true },
-      { name: "Cannoli Siciliani", description: "Crispy shells filled with sweetened ricotta & candied orange", price: 340, category: "desserts", isVeg: true },
-      { name: "Fondente al Cioccolato", description: "Warm chocolate lava cake with vanilla gelato & salted caramel", price: 420, category: "desserts", isVeg: true },
-      { name: "Negroni Sbagliato", description: "Campari, sweet vermouth & Prosecco on ice", price: 580, category: "drinks" },
-      { name: "Aperol Spritz", description: "Aperol, Prosecco & soda with fresh orange slice", price: 520, category: "drinks", featured: true },
-      { name: "Limoncello Spritz", description: "House limoncello, elderflower & sparkling water", price: 480, category: "drinks" },
-      { name: "San Pellegrino", description: "Italian sparkling mineral water 750ml", price: 180, category: "drinks", isVeg: true },
-    ];
+   const items = [
+  {
+    name: "Bruschetta al Pomodoro",
+    description: "Toasted bread with fresh tomatoes, basil & extra virgin olive oil",
+    price: 380,
+    category: "starters",
+    isVeg: true,
+    featured: true,
+    image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f"
+  },
+
+  {
+    name: "Burrata Caprese",
+    description: "Creamy burrata with heirloom tomatoes, basil oil & sea salt",
+    price: 520,
+    category: "starters",
+    isVeg: true,
+    image: "https://images.unsplash.com/photo-1608039755401-742074f0548d"
+  },
+
+  {
+    name: "Crispy Calamari",
+    description: "Lightly battered squid rings with marinara & lemon aioli",
+    price: 480,
+    category: "starters",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1625944525533-473f1b3d54b3"
+  },
+
+  {
+    name: "Wild Mushroom Arancini",
+    description: "Risotto balls filled with porcini mushrooms, truffle & parmesan",
+    price: 440,
+    category: "starters",
+    isVeg: true,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947"
+  },
+
+  {
+    name: "Grilled Sea Bass",
+    description: "Whole sea bass with herbs, capers, cherry tomatoes & white wine",
+    price: 1200,
+    category: "mains",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1559847844-5315695dadae"
+  },
+
+  {
+    name: "Osso Buco Milanese",
+    description: "Slow-braised veal shank with gremolata & saffron risotto",
+    price: 1450,
+    category: "mains",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554"
+  },
+
+  {
+    name: "Truffle Tagliatelle",
+    description: "Fresh pasta with black truffle, butter, parmesan & herbs",
+    price: 980,
+    category: "mains",
+    isVeg: true,
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9"
+  },
+
+  {
+    name: "Bistecca Fiorentina",
+    description: "T-bone steak grilled over charcoal, rosemary butter & roasted garlic",
+    price: 1800,
+    category: "mains",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947"
+  },
+
+  {
+    name: "Margherita Classica",
+    description: "San Marzano tomato, fior di latte mozzarella & fresh basil",
+    price: 620,
+    category: "mains",
+    isVeg: true,
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591"
+  },
+
+  {
+    name: "Tiramisu della Casa",
+    description: "Classic homemade tiramisu with espresso, mascarpone & cocoa",
+    price: 360,
+    category: "desserts",
+    isVeg: true,
+    featured: true,
+    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9"
+  }
+];
     await MenuItem.insertMany(items);
     res.json({ message: "Menu seeded!", count: items.length });
   } catch (err) {
