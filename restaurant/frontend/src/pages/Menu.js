@@ -16,13 +16,18 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = active === "all" ? "/api/menu" : `/api/menu?category=${active}`;
-    setLoading(true);
-    axios.get(url)
-      .then((r) => setItems(r.data))
-      .finally(() => setLoading(false));
-  }, [active]);
+  const url =
+    active === "all"
+      ? `${import.meta.env.VITE_API_URL}/api/menu`
+      : `${import.meta.env.VITE_API_URL}/api/menu?category=${active}`;
 
+  setLoading(true);
+
+  axios
+    .get(url)
+    .then((r) => setItems(r.data))
+    .finally(() => setLoading(false));
+}, [active]);
   return (
     <div className="min-h-screen pt-24 pb-20 px-6 bg-espresso-dark">
       <div className="max-w-6xl mx-auto">

@@ -14,7 +14,10 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/login", form);
+      const { data } = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/auth/login`,
+  form
+);
       login(data);
       toast.success(`Welcome back, ${data.name}!`);
       navigate("/");

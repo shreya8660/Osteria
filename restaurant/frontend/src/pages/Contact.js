@@ -12,7 +12,10 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("/api/contact", form);
+      await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/contact`,
+  form
+);
       toast.success("Message sent! We'll be in touch.");
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch {

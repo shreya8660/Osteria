@@ -20,20 +20,25 @@ const Admin = () => {
   useEffect(() => {
     if (!user) return navigate("/login");
     if (user.role !== "admin") return navigate("/");
-    axios.get("/api/bookings")
+    aaxios.get(`${import.meta.env.VITE_API_URL}/api/bookings`)
       .then(r => setBookings(r.data))
       .finally(() => setLoading(false));
   }, [user, navigate]);
 
   const updateStatus = async (id, status) => {
-    await axios.patch(`/api/bookings/${id}`, { status });
+    await axios.patch(
+  `${import.meta.env.VITE_API_URL}/api/bookings/${id}`,
+  { status }
+);
     setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
     toast.success("Status updated");
   };
 
   const seedMenu = async () => {
     try {
-      const { data } = await axios.post("/api/menu/seed");
+      const { data } = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/menu/seed`
+);
       toast.success(data.message);
     } catch {
       toast.error("Seed failed");

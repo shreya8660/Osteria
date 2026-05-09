@@ -7,7 +7,7 @@ const Home = () => {
   const [featured, setFeatured] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/menu?featured=true").then((r) => setFeatured(r.data)).catch(() => {});
+    axios.get(`${import.meta.env.VITE_API_URL}/api/menu?featured=true`).then((r) => setFeatured(r.data)).catch(() => {});
   }, []);
 
   return (

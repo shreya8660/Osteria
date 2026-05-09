@@ -31,7 +31,10 @@ const Booking = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/bookings", form);
+      const { data } = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/bookings`,
+  form
+);
       setSuccess(data.booking);
       toast.success("🎉 Table reserved successfully!");
     } catch (err) {

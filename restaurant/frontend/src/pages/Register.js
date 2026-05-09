@@ -17,7 +17,7 @@ const Register = () => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/register", {
+      const { data } = await axios.postaxios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         name: form.name, email: form.email, phone: form.phone, password: form.password
       });
       login(data);
