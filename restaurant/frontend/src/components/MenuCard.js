@@ -1,5 +1,15 @@
 const MenuCard = ({ item }) => (
   <div className="group relative bg-espresso-light border border-gold/15 hover:border-gold/40 transition-all duration-300 overflow-hidden">
+
+    {/* Food Image */}
+    {item.image && (
+      <img
+        src={item.image}
+        alt={item.name}
+        className="w-full h-52 object-cover"
+      />
+    )}
+
     {/* Veg / Non-veg indicator */}
     <div className="absolute top-3 right-3 z-10">
       <span
@@ -20,11 +30,16 @@ const MenuCard = ({ item }) => (
         <h3 className="font-display text-cream-light text-lg leading-snug group-hover:text-gold transition-colors duration-200">
           {item.name}
         </h3>
+
         <span className="font-sans text-gold font-semibold text-sm whitespace-nowrap">
           ₹{item.price}
         </span>
       </div>
-      <p className="font-body text-cream/55 text-sm leading-relaxed">{item.description}</p>
+
+      <p className="font-body text-cream/55 text-sm leading-relaxed">
+        {item.description}
+      </p>
+
       {item.featured && (
         <span className="inline-block mt-4 font-sans text-gold/70 text-xs tracking-widest uppercase border border-gold/30 px-2 py-0.5">
           Chef's Choice
